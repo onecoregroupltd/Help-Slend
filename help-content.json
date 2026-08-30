@@ -1,0 +1,66 @@
+{
+  "pages": [
+    {
+      "id": "invoices",
+      "title": "Invoices",
+      "description": "The Invoices page is where you create, send, and track invoices for your customers. Each invoice is linked to a Customer and can include one or more Products or services. Once you send an invoice, its status moves from draft to sent, then to paid once a Payment is recorded against it. You can also set up automatic reminder emails for invoices that are overdue."
+    },
+    {
+      "id": "dashboard",
+      "title": "Dashboard",
+      "description": "The Dashboard gives you a quick overview of your business activity: outstanding Invoices, recent Payments, active Projects, and upcoming Tasks. It's the first page you see when you log in, and it's designed to answer 'what needs my attention today' at a glance."
+    }
+  ],
+  "keywords": [
+    {
+      "id": "invoice",
+      "term": "Invoice",
+      "description": "A bill you send to a Customer for Products or services provided. An invoice tracks its own status (draft, sent, paid, overdue) and can be linked to one or more Payments."
+    },
+    {
+      "id": "customer",
+      "term": "Customer",
+      "description": "A person or company you do business with. Customers have their own profile page showing their Invoices, Payments, and any active Projects."
+    },
+    {
+      "id": "payment",
+      "term": "Payment",
+      "description": "A record of money received against an Invoice. A single invoice can be paid in full with one payment, or in several partial payments over time."
+    },
+    {
+      "id": "product",
+      "term": "Product",
+      "description": "An item or service you sell. Products can be added as line items on an Invoice, with their own price and quantity."
+    },
+    {
+      "id": "project",
+      "term": "Project",
+      "description": "A body of work for a Customer, made up of Tasks. Projects track overall progress and can be linked to Invoices for billing."
+    },
+    {
+      "id": "task",
+      "term": "Task",
+      "description": "A single unit of work within a Project. Tasks have a due date and a status, and show up on your Dashboard when they're coming up soon."
+    },
+    {
+      "id": "subscription",
+      "term": "Subscription",
+      "description": "Your plan for using the app itself, covering which features and usage limits are available to you."
+    },
+    {
+      "id": "tenant",
+      "term": "Tenant",
+      "description": "Your individual business account within the app. All your Customers, Invoices, and Projects belong to your tenant, separate from any other business using the same app."
+    },
+    {
+      "id": "design-review",
+      "term": "Design Review",
+      "description": "A shareable link you can send to a Customer so they can review and approve design work before a Project moves forward."
+    },
+    {
+      "id": "settings",
+      "term": "Settings",
+      "description": "Where you configure your account, business details, payment setup, and notification preferences."
+    }
+  ]
+}
