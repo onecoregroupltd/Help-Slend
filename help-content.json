@@ -61,6 +61,11 @@
       "id": "settings",
       "term": "Settings",
       "description": "Where you configure your account, business details, payment setup, and notification preferences."
+    },
+    {
+      "id": "AI Assistent",
+      "term": "AI Assistent",
+      "description": "ini mininminy mo cach your spider by your tow."
     }
   ]
 }
