@@ -40,9 +40,12 @@
   .item:hover { border-color: var(--cyan); }
   .item-title { font-size: 15px; font-weight: 600; }
   .detail { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; }
-  .detail-title { font-size: 19px; font-weight: 700; margin: 0 0 12px; }
+  .detail-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+  .detail-title { font-size: 19px; font-weight: 700; margin: 0; }
   .detail-body { font-size: 14.5px; line-height: 1.65; color: #364152; }
   .back { display: inline-block; margin-bottom: 14px; font-size: 13px; color: var(--accent); cursor: pointer; font-weight: 600; }
+  .share-btn { border: 1px solid var(--border); background: #f8fbfc; color: var(--text); border-radius: 999px; padding: 7px 12px; font-size: 12.5px; font-weight: 600; cursor: pointer; transition: border-color 0.15s, background 0.15s; }
+  .share-btn:hover { border-color: var(--cyan); background: #eefafc; }
   .kw-link { color: var(--accent); background: var(--accent-soft); padding: 1px 5px; border-radius: 5px; text-decoration: none; font-weight: 600; cursor: pointer; }
   .kw-link:hover { background: #cdeef3; }
   .empty { color: var(--muted); font-size: 14px; padding: 20px 0; }
@@ -83,6 +86,12 @@ function routeForState() {
   if (detailItem) return `#/${detailItem.type}/${encodeURIComponent(detailItem.id)}`;
   if (activeTab === "keywords" && searchQuery) return `#/search?q=${encodeURIComponent(searchQuery)}`;
   return `#/${activeTab}`;
+}
+
+function getShareUrl() {
+  const url = new URL(location.href);
+  url.hash = routeForState();
+  return url.toString();
 }
 
 function navigate() {
@@ -213,6 +222,32 @@ function renderList() {
   });
 }
 
+async function copyCurrentLink(button) {
+  const shareUrl = getShareUrl();
+
+  try {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(shareUrl);
+    } else {
+      const temp = document.createElement("textarea");
+      temp.value = shareUrl;
+      temp.setAttribute("readonly", "");
+      temp.style.position = "fixed";
+      temp.style.left = "-9999px";
+      document.body.appendChild(temp);
+      temp.select();
+      document.execCommand("copy");
+      document.body.removeChild(temp);
+    }
+
+    button.textContent = "Copied!";
+    setTimeout(() => { button.textContent = "Copy link"; }, 1200);
+  } catch (error) {
+    button.textContent = "Copy failed";
+    setTimeout(() => { button.textContent = "Copy link"; }, 1200);
+  }
+}
+
 function renderDetail() {
   const list = detailItem.type === "page" ? DATA.pages : DATA.keywords;
   const item = list.find(entry => entry.id === detailItem.id);
@@ -228,7 +263,10 @@ function renderDetail() {
   contentEl.innerHTML = `
     <div class="back" id="back-btn">&larr; Back to ${detailItem.type === "page" ? "Pages" : "Keywords"}</div>
     <div class="detail">
-      <div class="detail-title">${title}</div>
+      <div class="detail-header">
+        <div class="detail-title">${title}</div>
+        <button type="button" class="share-btn" id="share-btn">Copy link</button>
+      </div>
       <div class="detail-body">${linkedBody}</div>
     </div>
   `;
@@ -237,6 +275,10 @@ function renderDetail() {
     detailItem = null;
     searchQuery = "";
     navigate();
+  });
+
+  document.getElementById("share-btn").addEventListener("click", function () {
+    copyCurrentLink(this);
   });
 
   contentEl.querySelectorAll(".kw-link").forEach(link => {
