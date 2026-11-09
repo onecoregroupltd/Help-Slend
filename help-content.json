@@ -46,12 +46,7 @@
       "id": "subscription",
       "term": "Subscription",
       "description": "Your plan for using the app itself, covering which features and usage limits are available to you."
-    },
-    {
-      "id": "tenant",
-      "term": "Tenant",
-      "description": "Your individual business account within the app. All your Customers, Invoices, and Projects belong to your tenant, separate from any other business using the same app."
-    },
+    }, 
     {
       "id": "design-review",
       "term": "Design Review",
@@ -65,7 +60,19 @@
     {
       "id": "AI Assistent",
       "term": "AI Assistent",
-      "description": "ini mininminy mo cach your spider by your tow."
+      "description": "Connect your AI assistant (ChatGPT, Claude, etc.) using https://slend.app/mcp to manage your work through chat.
+      Workspace Owners can ask for summaries across all projects, check deadlines, create new projects and tasks, move work across stages, and update task notes.
+      Team Members can ask what’s assigned to them, update progress on their checklist action items, and add notes to their tasks. They cannot see financial details, create projects, or edit work belonging to others.
+      Option 1: ChatGPT
+      Open ChatGPT and go to Settings → Connected apps.
+      Click Add new → Add custom MCP server.
+      Paste: https://slend.app/mcp and save.
+      Log in with your Slend email and password to approve the connection.
+      Option 2: Claude
+      Open Claude and go to Settings → Customize.
+      Click Add new → Add custom connector.
+      Paste: https://slend.app/mcp and save.
+      Log in with your Slend email and password to approve the connection."
     }
   ]
 }
